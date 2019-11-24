@@ -13,7 +13,10 @@
               class="form-control">
             <span
               *ngIf="!signupForm.get('userData.usernameC').valid && signupForm.get('userData.usernameC').touched"
-              class="help-block">Please enter a valid username!</span>
+              class="help-block">
+              <span *ngIf="signupForm.get('userData.usernameC').errors['nameIsForbidden']">This usernae is invalid!</span>
+              <span *ngIf="signupForm.get('userData.usernameC').errors['required']">This field is required!</span>
+            </span>
           </div>
           <div class="form-group">
             <label for="email">Email</label>
@@ -24,7 +27,10 @@
               class="form-control">
             <span
               *ngIf="!signupForm.get('userData.emailC').valid && signupForm.get('userData.emailC').touched"
-              class="help-block">Please enter a valid email!</span>
+              class="help-block">
+              <span *ngIf="signupForm.get('userData.emailC').errors['emailIsForbidden']">This email is invalid!</span>
+              <span *ngIf="signupForm.get('userData.emailC').errors['email']">Not valid email format!</span>
+            </span>
           </div>
         </div>
         <div class="form-group" *ngFor="let gender of genders">
